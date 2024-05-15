@@ -11,7 +11,6 @@ from django.db.models import Count
 class DashboardsView(APIView):
     def get(self, request):
         result = []
-        print(request.query_params)
         if request.query_params['month'] == str(0):
             values = Dashboard.objects.values('phase').annotate(
                 total=Count('id'))
